@@ -136,7 +136,7 @@ async function getUserPosts(uID) {
 async function getUser (uID) {
 	if (!uID) return;
 	try {
-		const user = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${uID}`);
+		const user = await fetch(`https://jsonplaceholder.typicode.com/users/${uID}`);
 		if (!user) throw new Error("Couldn't retrieve user id data.");
 		
 		
