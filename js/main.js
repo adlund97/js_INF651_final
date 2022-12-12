@@ -24,7 +24,7 @@ function createSelectOptions (data) {
 // 3
 function toggleCommentSection (pID) {
 	const sectionPostID = document.querySelector(`section[data-post-id='${pID}']`);
-	if (!pID) return;
+	if (sectionPostID === NULL) return;
 	sectionPostID.classList.toggle('hide');
 	return sectionPostID;
 }
@@ -32,7 +32,7 @@ function toggleCommentSection (pID) {
 // 4
 function toggleCommentButton (pID) {
 	const buttonPostID = document.querySelector(`button[data-post-id='${pID}']`);
-	if (!buttonPostID) { return; }
+	if (buttonPostID === NULL) { return; }
 	else if (buttonPostID.textContent === 'Show Comments') {
 		buttonPostID.textContent = 'Hide Comments';
 	} else {
@@ -43,11 +43,12 @@ function toggleCommentButton (pID) {
 
 // 5
 function deleteChildElements (parentElem) {
+	if (parentElem === NULL) return;
 	const child = parentElem.lastElementChild;
 	while (child) {
 		parentElem.removeChild(child);
 		child = parentElem.lastElementChild;
-	}
+	};
 	return parentElem;
 }
 
@@ -55,7 +56,7 @@ function deleteChildElements (parentElem) {
 function addButtonListeners () {
 	const main = document.querySelector('main');
 	const myButtons = main.querySelectorAll('button');
-	if (!myButtons) return;
+	if (myButtons === NULL) return;
 	myButtons.forEach((buttons) => {
 		const postID = buttons.dataset.postId;
 		buttons.addEventListener('click', function (e) {toggleComments(e, postID)}, false);
