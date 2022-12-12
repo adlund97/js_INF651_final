@@ -205,7 +205,7 @@ async function createPosts (postData) {
 async function displayPosts (postData) {
 	const main = document.querySelector('main');
 	let elem;
-	if (!postData) elem = createElemWithText('p');
+	if (!postData) elem = createElemWithText('p', 'Select an Employee to display their posts.');
 	else elem = await createPosts(postData);
 	
 	main.append(elem);
@@ -239,11 +239,11 @@ async function refreshPosts (postData) {
 async function selectMenuChangeEventHandler () {
 	if (!event) return;
 	document.querySelector('#selectMenu').disabled = true;
-	const userId = event.target.value || 1;
+	const userId = target.value || 1;
 	const posts = await getUserPosts(userId);
-	const refreshPosts = await refreshPosts(posts);
+	const refresh = await refreshPosts(posts);
 	document.querySelector('#selectMenu').disabled = false;
-	const newArray = [userId, posts, refreshPosts];
+	const newArray = [userId, posts, refresh];
     	return newArray;
 }
 
