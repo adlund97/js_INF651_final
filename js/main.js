@@ -237,7 +237,7 @@ async function refreshPosts (postData) {
 
 // 19
 async function selectMenuChangeEventHandler () {
-	if (!event) return;
+	//if (!event) return;
 	const selectMenu = document.querySelector('#selectMenu');
 	selectMenu.disabled = true;
 	const userId = event.target.value || 1;
