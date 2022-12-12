@@ -205,7 +205,7 @@ async function createPosts (postData) {
 async function displayPosts (postData) {
 	const main = document.querySelector('main');
 	let elem;
-	if (!postData) elem = createElemWithText('p', 'Select an Employee to display their posts.');
+	if (!postData) elem = createElemWithText('p');
 	else elem = await createPosts(postData);
 	
 	main.append(elem);
