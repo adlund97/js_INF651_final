@@ -45,7 +45,7 @@ function toggleCommentButton (pID) {
 
 // 5
 function deleteChildElements (parentElem) {
-	if(!parentElem) return;
+	if(!parentElem?.tagname) return;
 	let child = parentElem.lastElementChild;
 	while (child) {
 		parentElem.removeChild(child);
@@ -133,7 +133,8 @@ async function getUserPosts(uID) {
 }
 
 // 12
-async function getUser () {
+async function getUser (uID) {
+	if (!uID) return;
 	try {
 		const user = await fetch(`https://jsonplaceholder.typicode.com/users?id=${uID}`);
 		if (!userPost) throw new Error("Couldn't retrieve user post data.");
@@ -192,8 +193,6 @@ async function createPosts (postData) {
 		article.append(para3);
 		article.append(para4);
 		article.append(myButton);
-		article.append(author);
-		
 		
 		const section = await displayComments(post.id);
 		article.append(section);
@@ -227,25 +226,25 @@ function toggleComments (clickEvent, postID) {
 async function refreshPosts (postData) {
 	if (!postData) return;
 	const myButtonsRemove = removeButtonListeners();
-	const main = document.querySelector('main');
+	let main = document.querySelector('main');
 	main = deleteChildElements(main);
 	const fragment = await displayPosts(postData);
 	const myButtonsAdd = addButtonListeners();
 	
 	const newArray = [myButtonsRemove, main, fragment, myButtonsAdd];
-    return newArray;
+    	return newArray;
 }
 
 // 19
 async function selectMenuChangeEventHandler () {
 	if (!event) return;
 	document.querySelector('#selectMenu').disabled = true;
-	userId = event.target.value || 1;
+	const userId = event.target.value || 1;
 	const posts = await getUserPosts(userId);
 	const refreshPosts = await refreshPosts(posts);
 	document.querySelector('#selectMenu').disabled = false;
 	const newArray = [userId, posts, refreshPosts];
-    return newArray;
+    	return newArray;
 }
 
 // 20
