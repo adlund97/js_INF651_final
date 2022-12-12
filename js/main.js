@@ -176,7 +176,7 @@ async function displayComments (postID) {
 async function createPosts (postData) {
 	if (!postData) return;
 	const fragment = document.createDocumentFragment();
-	postData.forEach((post) => {
+	postData.forEach(async (post) => {
 		const article = document.createElement('article');
 		const header2 = createElemWithText('h2', post.title);
 		const para1 = createElemWithText('p', post.body);
