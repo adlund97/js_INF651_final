@@ -238,11 +238,12 @@ async function refreshPosts (postData) {
 // 19
 async function selectMenuChangeEventHandler () {
 	if (!event) return;
-	document.querySelector('#selectMenu').disabled = false;
-	const userId = target.value || 1;
+	const selectMenu = document.querySelector('#selectMenu');
+	selectMenu.disabled = true;
+	const userId = event.target.value || 1;
 	const posts = await getUserPosts(userId);
 	const refresh = await refreshPosts(posts);
-	document.querySelector('#selectMenu').disabled = true;
+	selectMenu.disabled = false;
 	const newArray = [userId, posts, refresh];
     	return newArray;
 }
