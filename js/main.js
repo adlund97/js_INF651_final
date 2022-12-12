@@ -197,7 +197,7 @@ async function createPosts (postData) {
 		const section = await displayComments(post.id);
 		article.append(section);
 		fragment.append(article);
-	});
+	};
 	return fragment;
 }
 
