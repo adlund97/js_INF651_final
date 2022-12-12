@@ -120,6 +120,7 @@ async function getUsers () {
 
 // 11
 async function getUserPosts(uID) {
+	if (!uID) return;
 	try {
 		const userPost = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${uID}`);
 		if (!userPost) throw new Error("Couldn't retrieve user post data.");
@@ -146,6 +147,7 @@ async function getUser () {
 
 // 13
 async function getPostComments (postID) {
+	if (!postID) return;
 	try {
 		const commentID = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postID}`);
 		if (!commentID) throw new Error("Couldn't retrieve user post data.");
