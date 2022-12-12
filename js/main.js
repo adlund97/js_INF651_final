@@ -183,7 +183,7 @@ async function createPosts (postData) {
 		const para2 = createElemWithText('p', `Post ID: ${post.id}`);
 		const author = await getUser(post.userId);
 		const para3 = createElemWithText('p', `Author: ${author.name} with ${author.company.name}`);
-		const para4 = createElemWithText('p', `${author.company.catchPhrase}`);*/
+		const para4 = createElemWithText('p', `${author.company.catchPhrase}`);
 		const myButton = createElemWithText('button', 'Show Comments');
 		myButton.dataset.postId = post.id;
 		
