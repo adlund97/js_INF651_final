@@ -190,8 +190,8 @@ function createPosts (postData) {
 		article.append(header2);
 		article.append(para1);
 		article.append(para2);
-		article.append(para3);
-		article.append(para4);
+		//article.append(para3);
+		//article.append(para4);
 		article.append(myButton);
 		
 		//const section = await displayComments(post.id);
