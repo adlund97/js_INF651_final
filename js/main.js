@@ -173,15 +173,15 @@ async function displayComments (postID) {
 }
 
 // 15
-function createPosts (postData) {
+async function createPosts (postData) {
 	if (!postData) return;
 	const fragment = document.createDocumentFragment();
-	postData.forEach((post) => {
+	for (const post of postData) {
 		const article = document.createElement('article');
 		const header2 = createElemWithText('h2', post.title);
 		const para1 = createElemWithText('p', post.body);
 		const para2 = createElemWithText('p', `Post ID: ${post.id}`);
-		/*const author = await getUser(post.userId);
+		const author = await getUser(post.userId);
 		const para3 = createElemWithText('p', `Author: ${author.name} with ${author.company.name}`);
 		const para4 = createElemWithText('p', `${author.company.catchPhrase}`);*/
 		const myButton = createElemWithText('button', 'Show Comments');
@@ -190,12 +190,12 @@ function createPosts (postData) {
 		article.append(header2);
 		article.append(para1);
 		article.append(para2);
-		//article.append(para3);
-		//article.append(para4);
+		article.append(para3);
+		article.append(para4);
 		article.append(myButton);
 		
-		//const section = await displayComments(post.id);
-		//article.append(section);
+		const section = await displayComments(post.id);
+		article.append(section);
 		fragment.append(article);
 	});
 	return fragment;
