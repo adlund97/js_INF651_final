@@ -45,7 +45,7 @@ function toggleCommentButton (pID) {
 
 // 5
 function deleteChildElements (parentElem) {
-	if(!parentElem?.tagname) return;
+	if(!parentElem?.tagName) return;
 	let child = parentElem.lastElementChild;
 	while (child) {
 		parentElem.removeChild(child);
