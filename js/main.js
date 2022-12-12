@@ -176,8 +176,8 @@ async function displayComments (postID) {
 async function createPosts (postData) {
 	if (!postData) return;
 	const fragment = document.createDocumentFragment();
-	const article = document.createElement('article');
 	postData.forEach((post) => {
+		const article = document.createElement('article');
 		const header2 = createElemWithText('h2', post.title);
 		const para1 = createElemWithText('p', post.body);
 		const para2 = createElemWithText('p', `Post ID: ${post.id}`);
@@ -196,8 +196,8 @@ async function createPosts (postData) {
 		
 		const section = await displayComments(post.id);
 		article.append(section);
+		fragment.append(article);
 	});
-	fragment.append(article);
 	return fragment;
 }
 
