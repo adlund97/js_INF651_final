@@ -176,15 +176,15 @@ async function displayComments (postID) {
 async function createPosts (postData) {
 	if (!postData) return;
 	const fragment = document.createDocumentFragment();
-	postData.forEach(async (post) => {
-		const article = document.createElement('article');
-		const header2 = createElemWithText('h2', post.title);
-		const para1 = createElemWithText('p', post.body);
-		const para2 = createElemWithText('p', `Post ID: ${post.id}`);
-		const author = await getUser(post.userId);
-		const para3 = createElemWithText('p', `Author: ${author.name} with ${author.company.name}`);
-		const para4 = createElemWithText('p', `${author.company.catchPhrase}`);
-		const myButton = createElemWithText('button', 'Show Comments');
+	postData.forEach((post) => {
+		let article = document.createElement('article');
+		let header2 = createElemWithText('h2', post.title);
+		let para1 = createElemWithText('p', post.body);
+		let para2 = createElemWithText('p', `Post ID: ${post.id}`);
+		let author = await getUser(post.userId);
+		let para3 = createElemWithText('p', `Author: ${author.name} with ${author.company.name}`);
+		let para4 = createElemWithText('p', `${author.company.catchPhrase}`);
+		let myButton = createElemWithText('button', 'Show Comments');
 		myButton.dataset.postId = post.id;
 		
 		article.append(header2);
