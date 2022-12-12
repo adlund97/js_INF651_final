@@ -25,15 +25,16 @@ function createSelectOptions (data) {
 function toggleCommentSection (pID) {
 	if (!pID) return;
 	const sectionPostID = document.querySelector(`section[data-post-id='${pID}']`);
-	if (!sectionPostID) return NULL;
+	if (!sectionPostID) return null;
 	sectionPostID.classList.toggle('hide');
 	return sectionPostID;
 }
 
 // 4
 function toggleCommentButton (pID) {
+	if (!pID) return;
 	const buttonPostID = document.querySelector(`button[data-post-id='${pID}']`);
-	if (!buttonPostID) { return; }
+	if (!buttonPostID) { return null; }
 	else if (buttonPostID.textContent === 'Show Comments') {
 		buttonPostID.textContent = 'Hide Comments';
 	} else {
@@ -44,7 +45,8 @@ function toggleCommentButton (pID) {
 
 // 5
 function deleteChildElements (parentElem) {
-	const child = parentElem.lastElementChild;
+	if(!parentElem) return;
+	let child = parentElem.lastElementChild;
 	while (child) {
 		parentElem.removeChild(child);
 		child = parentElem.lastElementChild;
