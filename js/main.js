@@ -161,6 +161,7 @@ async function getPostComments (postID) {
 
 // 14
 async function displayComments (postID) {
+	if (!postID) return;
 	const section = document.createElement('section');
 	section.dataset.postId = postID;
 	section.classList.add('comments', 'hide');
@@ -172,6 +173,7 @@ async function displayComments (postID) {
 
 // 15
 async function createPosts (postData) {
+	if (!postData) return;
 	const fragment = document.createDocumentFragment();
 	postData.forEach(async (post) => {
 		const article = document.createElement('article');
@@ -189,8 +191,9 @@ async function createPosts (postData) {
 		article.append(para2);
 		article.append(para3);
 		article.append(para4);
-		article.append(author);
 		article.append(myButton);
+		article.append(author);
+		
 		
 		const section = await displayComments(post.id);
 		article.append(section);
@@ -212,6 +215,7 @@ async function displayPosts (postData) {
 
 // 17
 function toggleComments (clickEvent, postID) {
+	if (!postID) return;
 	clickEvent.target.listener = true;
 	const section = toggleCommentSection(postID);
 	const myButton = toggleCommentButton(postID);
@@ -221,6 +225,7 @@ function toggleComments (clickEvent, postID) {
 
 // 18
 async function refreshPosts (postData) {
+	if (!postData) return;
 	const myButtonsRemove = removeButtonListeners();
 	const main = document.querySelector('main');
 	main = deleteChildElements(main);
@@ -233,6 +238,7 @@ async function refreshPosts (postData) {
 
 // 19
 async function selectMenuChangeEventHandler () {
+	if (!event) return;
 	document.querySelector('#selectMenu').disabled = true;
 	userId = event.target.value || 1;
 	const posts = await getUserPosts(userId);
