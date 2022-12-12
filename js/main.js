@@ -45,7 +45,7 @@ function toggleCommentButton (pID) {
 
 // 5
 function deleteChildElements (parentElem) {
-	if(!isElement(parentElem)) return;
+	if(!parentElem) return;
 	let child = parentElem.lastElementChild;
 	while (child) {
 		parentElem.removeChild(child);
@@ -80,6 +80,7 @@ function removeButtonListeners () {
 
 // 8
 function createComments (comments) {
+	if (!comments) return;
 	const fragment = document.createDocumentFragment();
 	comments.forEach((comment) => {
 		const article = document.createElement('article');
@@ -96,7 +97,8 @@ function createComments (comments) {
 
 // 9
 function populateSelectMenu (users) {
-	const sMenu = document.getElementById('#selectMenu');
+	if (!users) return;
+	const sMenu = document.querySelector('#selectMenu');
 	const newOptions = createSelectOptions(users);
 	newOptions.forEach((options) => {
 		sMenu.append(options);
@@ -117,7 +119,7 @@ async function getUsers () {
 }
 
 // 11
-async function getUsersPosts(uID) {
+async function getUserPosts(uID) {
 	try {
 		const userPost = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${uID}`);
 		if (!userPost) throw new Error("Couldn't retrieve user post data.");
