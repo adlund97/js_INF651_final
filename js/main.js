@@ -173,7 +173,7 @@ async function displayComments (postID) {
 }
 
 // 15
-async function createPosts (postData) {
+function createPosts (postData) {
 	if (!postData) return;
 	const fragment = document.createDocumentFragment();
 	postData.forEach(async (post) => {
@@ -185,7 +185,7 @@ async function createPosts (postData) {
 		const para3 = createElemWithText('p', `Author: ${author.name} with ${author.company.name}`);
 		const para4 = createElemWithText('p', `${author.company.catchPhrase}`);
 		const myButton = createElemWithText('button', 'Show Comments');
-		//myButton.dataset.postId = post.id;
+		myButton.dataset.postId = post.id;
 		
 		article.append(header2);
 		article.append(para1);
