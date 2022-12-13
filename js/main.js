@@ -236,7 +236,7 @@ async function refreshPosts (postData) {
 }
 
 // 19
-async function selectMenuChangeEventHandler () {
+async function selectMenuChangeEventHandler (event) {
 	console.log(event);
 	if (!event) return;
 	console.log("Testing2");
@@ -264,7 +264,7 @@ async function initPage () {
 function initApp () {
 	initPage();
 	const selectMenu = document.querySelector('#selectMenu');
-	selectMenu.addEventListener('change', selectMenuChangeEventHandler(), false);
+	selectMenu.addEventListener('change', selectMenuChangeEventHandler(e), false);
 }
 
 document.addEventListener('DOMContentLoaded', initApp(), false);
