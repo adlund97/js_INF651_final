@@ -204,9 +204,7 @@ async function createPosts (postData) {
 // 16
 async function displayPosts (postData) {
 	const main = document.querySelector('main');
-	let elem;
-	if (!postData) elem = createElemWithText();
-	else elem = await createPosts(postData);
+	const elem = (postData ? await createPosts(postData) : createElemWithText());
 	
 	main.append(elem);
 	return elem;
@@ -237,10 +235,7 @@ async function refreshPosts (postData) {
 
 // 19
 async function selectMenuChangeEventHandler (event) {
-	console.log(event);
 	if (!event) return;
-	console.log("Testing2");
-	console.log(event);
 	const selectMenu = document.querySelector('#selectMenu');
 	selectMenu.disabled = true;
 	const userId = event.target.value || 1;
@@ -248,7 +243,6 @@ async function selectMenuChangeEventHandler (event) {
 	const refresh = await refreshPosts(posts);
 	selectMenu.disabled = false;
 	const infoArray = [userId, posts, refresh];
-	console.log(infoArray);
     	return infoArray;
 }
 
