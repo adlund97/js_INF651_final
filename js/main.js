@@ -1,7 +1,7 @@
-function  createElemWithText (hElem = "p", cName) {
+function  createElemWithText (hElem = "p", content = "", cName) {
 	const newElem = document.createElement(hElem);
 	newElem.id = "placeholder";
-	newElem.textContent = "";
+	newElem.textContent = content;
 	if (cName) {
 		newElem.classList.add(cName);
 	}
