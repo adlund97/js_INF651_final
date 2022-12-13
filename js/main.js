@@ -1,7 +1,7 @@
-function  createElemWithText (hElem = "p", content = "random", cName) {
+function  createElemWithText (hElem = "p", cName) {
 	const newElem = document.createElement(hElem);
 	newElem.id = "placeholder";
-	newElem.textContent = content;
+	newElem.textContent = "";
 	if (cName) {
 		newElem.classList.add(cName);
 	}
@@ -244,9 +244,8 @@ async function selectMenuChangeEventHandler () {
 	const posts = await getUserPosts(userId);
 	const refresh = await refreshPosts(posts);
 	selectMenu.disabled = false;
-	const newArray = [];
-	newArray.push(userId, posts, refresh);
-    	return newArray;
+	const infoArray = [userId, posts, refresh];
+    	return infoArray;
 }
 
 // 20
