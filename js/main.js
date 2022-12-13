@@ -204,7 +204,7 @@ async function createPosts (postData) {
 // 16
 async function displayPosts (postData) {
 	const main = document.querySelector('main');
-	const elem = (postData ? await createPosts(postData) : createElemWithText('p', 'Select an Employee to display their posts.'));
+	const elem = (postData ? await createPosts(postData) : createElemWithText('p', 'Select an Employee to display their posts.', 'default-text'));
 	console.log(elem);
 	main.append(elem);
 	return elem;
@@ -258,7 +258,7 @@ async function initPage () {
 function initApp () {
 	initPage();
 	const selectMenu = document.querySelector('#selectMenu');
-	selectMenu.addEventListener('change', selectMenuChangeEventHandler(e), false);
+	selectMenu.addEventListener('change', selectMenuChangeEventHandler(), false);
 }
 
 document.addEventListener('DOMContentLoaded', initApp(), false);
