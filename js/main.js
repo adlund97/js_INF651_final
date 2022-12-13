@@ -1,4 +1,4 @@
-function  createElemWithText (hElem = "p", content = "", cName) {
+function  createElemWithText (hElem = "p", content = "random", cName) {
 	const newElem = document.createElement(hElem);
 	newElem.id = "placeholder";
 	newElem.textContent = content;
@@ -244,7 +244,8 @@ async function selectMenuChangeEventHandler () {
 	const posts = await getUserPosts(userId);
 	const refresh = await refreshPosts(posts);
 	selectMenu.disabled = false;
-	const newArray = [userId, posts, refresh];
+	const newArray = [];
+	newArray.push(userId, posts, refresh);
     	return newArray;
 }
 
