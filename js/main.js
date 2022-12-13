@@ -238,7 +238,7 @@ async function refreshPosts (postData) {
 // 19
 async function selectMenuChangeEventHandler () {
 	console.log("Testing1");
-	if (event === undefined) return;
+	if (!event) return;
 	console.log("Testing2");
 	console.log(event);
 	const selectMenu = document.querySelector('#selectMenu');
