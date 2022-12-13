@@ -237,7 +237,7 @@ async function refreshPosts (postData) {
 
 // 19
 async function selectMenuChangeEventHandler () {
-	console.log("Testing1");
+	console.log(event);
 	if (!event) return;
 	console.log("Testing2");
 	console.log(event);
